@@ -7,16 +7,16 @@
 ```bash
 git clone git@github.com:awoods/cat-facts.git
 cd cat-facts
-uv pip freeze
+pip freeze
 python facts.py # (may or may not work, based on locally available dependencies)
-# Following command equivalent to: python3.13 -m venv .venv
-uv venv --python 3.13
+python3.12 -m venv .venv
 source .venv/bin/activate
-uv pip freeze
+pip freeze
 python facts.py # (will not work)
-uv init --bare # only creates pyproject.toml
-uv add requests
+pip install requests
+pip freeze
 clear; python facts.py # (success)
+pip freeze > requirements.txt
 deactivate
 ```
 
@@ -33,9 +33,9 @@ deactivate
 cd cat-facts
 rm -rf .venv
 python facts.py # (may or may not work)
-uv venv --python 3.13
+python3.12 -m venv .venv
 source .venv/bin/activate
 python facts.py # (will not work)
-uv sync
+pip install -r requirements.txt
 python facts.py # (success)
 ```
